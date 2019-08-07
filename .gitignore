@@ -3,3 +3,6 @@
 /node_modules
 /bower_components
 package-lock.json
+CHANGELOG.md
+gulpfile.js
+.DS_Store
