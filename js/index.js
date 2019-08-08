@@ -9,8 +9,12 @@ $(document).ready(function(){
     db = firebase.firestore(app);
     //firebase.firestore.setLogLevel("debug");
 
-    // Listen to Machine usage updates
-    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/05")
+    //var today = new Date();
+    //var date = today.getFullYear()+'/'+(today.getUTCMonth()+1).toISOString();+'/'+today.getUTCDate().toISOString();
+
+    //console.log(date);
+    var first_pass = true
+    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/07")
     .onSnapshot(function(querySnapshot) {
         var machines = [];
         var totalTimes = [];
@@ -18,23 +22,52 @@ $(document).ready(function(){
             machines.push(doc.data().Name);
             totalTimes.push(doc.data().TotalTime);
         });
-        init(machines, totalTimes);
+        if (first_pass)
+        {
+            init(machines, totalTimes, first_pass);
+            first_pass = false
+        }else{
+            init(machines, totalTimes, first_pass);
+        }
         charts(machines, totalTimes);
     })
 })
 
 
-function init(machines, totalTimes){
+function init(machines, totalTimes, first_pass){
 
     for (i = 0; i < machines.length; i++)
     {
     console.log("Machine " + machines[i] + " ran for: " + totalTimes[i] );
     }
 
-    table = document.getElementById("table");
+    var table = document.getElementById("table");
+    
+    if(!first_pass){
+        var x = table.rows.length;
+
+    for (i = 0; i < table.rows.length; i++)
+    {
+        var row = table.deleteRow(1);
+        console.log('deletion worked');
+    }
+    }
+    //var rows = $("#table-body").find('tr');
+    //console.log('# of rows' + rows);
+
+    //var x = document.getElementById("myTable").rows.length;
+
+    //for (i = 0; x > machines.length; i++)
+   // {
+    //    var row = table.deleteRow(1);
+    //    console.log('deletion worked');
+    //}
+
+
     // rows
     for(var i = 0; i < machines.length; i++)
     {
+    
     // Create an empty <tr> element and add it to the 1st position of the table:
     var row = table.insertRow(1);
 
@@ -45,9 +78,12 @@ function init(machines, totalTimes){
 
     // Add some text to the new cells:
     cell1.innerHTML = machines[i];
-    cell2.innerHTML = totalTimes[i];
+    let time = new Date(totalTimes[i] * 1000).toISOString().substr(11, 8);
+    let a = time.split(':');
+    cell2.innerHTML = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
 
     }
+
 };
 
 
@@ -61,7 +97,7 @@ function charts(machines, totalTimes){
     var data = {
         labels: machines,
         datasets: [{
-        label: '# of Votes',
+        label: '# of Seconds',
         data: totalTimes,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
