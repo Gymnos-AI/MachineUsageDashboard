@@ -7,7 +7,7 @@ $(document).ready(function(){
     };
     let app = firebase.initializeApp(config);
     db = firebase.firestore(app);
-    //firebase.firestore.setLogLevel("debug");`
+    //firebase.firestore.setLogLevel("debug");
 
     // Listen to Machine usage updates
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/05")
@@ -36,7 +36,7 @@ function init(machines, totalTimes){
     for(var i = 0; i < machines.length; i++)
     {
     // Create an empty <tr> element and add it to the 1st position of the table:
-    var row = table.insertRow(0);
+    var row = table.insertRow(1);
 
     // cells
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
