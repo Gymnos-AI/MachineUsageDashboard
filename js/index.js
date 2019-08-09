@@ -46,11 +46,11 @@ function init(machines, totalTimes, first_pass){
     if(!first_pass){
         var x = table.rows.length;
 
-    for (i = 0; i < table.rows.length; i++)
-    {
-        var row = table.deleteRow(1);
-        console.log('deletion worked');
-    }
+        for (i = 0; i < x+1; i++)
+        {
+            var row = table.deleteRow(1);
+            console.log('deletion worked');
+        }
     }
     //var rows = $("#table-body").find('tr');
     //console.log('# of rows' + rows);
