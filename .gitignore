@@ -6,3 +6,4 @@ package-lock.json
 CHANGELOG.md
 gulpfile.js
 .DS_Store
+images/.DS_Store
