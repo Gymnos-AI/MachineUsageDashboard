@@ -9,12 +9,22 @@ $(document).ready(function(){
     db = firebase.firestore(app);
     //firebase.firestore.setLogLevel("debug");
 
-    //var today = new Date();
-    //var date = today.getFullYear()+'/'+(today.getUTCMonth()+1).toISOString();+'/'+today.getUTCDate().toISOString();
 
-    //console.log(date);
+    function formatDate() {
+        var d = new Date(),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+    
+        return [year, month, day].join('/');
+    }
+
+    console.log(formatDate());
     var first_pass = true
-    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/08")
+    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
         var totalTimes = [];
