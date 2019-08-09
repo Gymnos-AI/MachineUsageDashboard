@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     //console.log(date);
     var first_pass = true
-    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/07")
+    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", "2019/08/08")
     .onSnapshot(function(querySnapshot) {
         var machines = [];
         var totalTimes = [];
