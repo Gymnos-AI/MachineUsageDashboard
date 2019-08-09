@@ -79,7 +79,13 @@ function init(machines, totalTimes, first_pass){
     cell1.innerHTML = machines[i];
     let time = new Date(totalTimes[i] * 1000).toISOString().substr(11, 8);
     let a = time.split(':');
-    cell2.innerHTML = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
+
+    if (a[0] == "00"){
+        cell2.innerHTML = a[1] + ' minutes ' + a[2] + ' seconds';
+        console.log(a[1] + ' minutes ' + a[2] + ' seconds');
+    }else {
+        cell2.innerHTML = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
+    }
 
     }
 
