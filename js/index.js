@@ -46,7 +46,7 @@ function init(machines, totalTimes, first_pass){
     if(!first_pass){
         var x = table.rows.length;
 
-        for (i = 0; i < x+1; i++)
+        for (i = 1; i < x; i++)
         {
             var row = table.deleteRow(1);
             console.log('deletion worked');
