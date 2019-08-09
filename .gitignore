@@ -7,3 +7,6 @@ CHANGELOG.md
 gulpfile.js
 .DS_Store
 images/.DS_Store
+js/.DS_Store
+fonts/Ubuntu/.DS_Store
+fonts/.DS_Store

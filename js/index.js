@@ -81,12 +81,12 @@ function init(machines, totalTimes, first_pass){
     let a = time.split(':');
 
     if (a[0] == "00"){
-        cell2.innerHTML = a[1] + ' minutes ' + a[2] + ' seconds';
+        x = a[1] + ' minutes ' + a[2] + ' seconds';
         console.log(a[1] + ' minutes ' + a[2] + ' seconds');
     }else {
-        cell2.innerHTML = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
+        x = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
     }
-
+    cell2.innerHTML = x
     }
 
 };
