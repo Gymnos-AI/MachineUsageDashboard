@@ -80,13 +80,17 @@ function init(machines, totalTimes, first_pass){
     let time = new Date(totalTimes[i] * 1000).toISOString().substr(11, 8);
     let a = time.split(':');
 
-    if (a[0] == "00"){
-        x = a[1] + ' minutes ' + a[2] + ' seconds';
-        console.log(a[1] + ' minutes ' + a[2] + ' seconds');
-    }else {
-        x = a[0]+' hours ' + a[1] + ' minutes ' + a[2] + ' seconds';
+    // some boolean logic to slice out the unnessary zeros and only include seconds
+    // minutes or hours exclusively
+    if (a[1] == "00"){
+        x = Number(a[2]).toString() + ' seconds';
+    } else if (a[0] == "00") {
+        x = Number(a[1]).toString() + ' minutes ' + Number(a[2]).toString() + ' seconds';
     }
-    cell2.innerHTML = x
+    else {
+        x = Number(a[0]).toString()+' hours ' + Number(a[1]).toString() + ' minutes ' + Number(a[2]).toString() + ' seconds';
+    }
+    cell2.innerHTML = x;
     }
 
 };
