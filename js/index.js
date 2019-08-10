@@ -9,7 +9,7 @@ $(document).ready(function(){
     db = firebase.firestore(app);
     //firebase.firestore.setLogLevel("debug");
 
-
+    // a function that grabs todays date and formats it in yyyy/mm/dd
     function formatDate() {
         var d = new Date(),
             month = '' + (d.getMonth() + 1),
