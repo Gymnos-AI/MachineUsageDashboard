@@ -61,16 +61,6 @@ function init(machines, totalTimes, first_pass){
             console.log('deletion worked');
         }
     }
-    //var rows = $("#table-body").find('tr');
-    //console.log('# of rows' + rows);
-
-    //var x = document.getElementById("myTable").rows.length;
-
-    //for (i = 0; x > machines.length; i++)
-   // {
-    //    var row = table.deleteRow(1);
-    //    console.log('deletion worked');
-    //}
 
 
     // rows
