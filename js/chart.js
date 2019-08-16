@@ -22,8 +22,13 @@ $(document).ready(function(){
         return [year, month, day].join('/');
     }
 
+    $('#start').on('change', function(){
+        let value = $(this).val().replace(/-/g , '/');
+        query_date(value, value, db);
+    });
 
-    console.log(formatDate());
+
+    //console.log(formatDate());
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -36,8 +41,22 @@ $(document).ready(function(){
     })
 })
 
+function query_date(from, to, db){
 
-/*
+    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", from)
+    .onSnapshot(function(querySnapshot) {
+        var machines = [];
+        var totalTimes = [];
+        querySnapshot.forEach(function(doc) {
+            machines.push(doc.data().Name);
+            totalTimes.push(doc.data().TotalTime);
+        });
+
+        charts(machines, totalTimes);
+    })
+
+}
+
 function addData(chart, label, data) {
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset) => {
@@ -53,7 +72,6 @@ function removeData(chart) {
     });
     chart.update();
 }
-*/
 
 function charts(machines, totalTimes){
     
