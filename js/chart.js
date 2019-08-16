@@ -9,26 +9,9 @@ $(document).ready(function(){
     db = firebase.firestore(app);
     //firebase.firestore.setLogLevel("debug");
 
-    // a function that grabs todays date and formats it in yyyy/mm/dd
-    function formatDate() {
-        var d = new Date(),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
     
-        if (month.length < 2) month = '0' + month;
-        if (day.length < 2) day = '0' + day;
-    
-        return [year, month, day].join('/');
-    }
-
-    $('#start').on('change', function(){
-        let value = $(this).val().replace(/-/g , '/');
-        query_date(value, value, db);
-    });
-
-
     //console.log(formatDate());
+    /*
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -39,11 +22,47 @@ $(document).ready(function(){
         });
         charts(machines, totalTimes);
     })
+    */
+
+    let from = null;
+    let to = null;
+
+    function stuff(){ 
+        query_date(from, to, db);
+    }
+
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+        }, function(start, end, label, db) {
+            from = start.format('YYYY/MM/DD');
+            to = end.format('YYYY/MM/DD');
+            stuff();
+
+            //query_date(start.format('YYYY/MM/DD'), end.format('YYYY/MM/DD'), db);
+        //console.log("A new date selection was made: " + start.format('YYYY/MM/DD') + ' to ' + end.format('YYYY/MM/DD'));
+        });
+
+    
 })
 
-function query_date(from, to, db){
+// a function that grabs todays date and formats it in yyyy/mm/dd
+function formatDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
-    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", from)
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('/');
+}
+
+
+
+function query_date(from, to, db){
+    //removeData(charts)
+    db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", ">=", from).where("Date", "<=", to)
     .onSnapshot(function(querySnapshot) {
         var machines = [];
         var totalTimes = [];
@@ -103,7 +122,8 @@ function charts(machines, totalTimes){
         ],
         borderWidth: 1,
         fill: false
-        }]
+        }],
+
     };
 
     var options = {
