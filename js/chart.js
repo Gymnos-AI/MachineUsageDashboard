@@ -22,6 +22,7 @@ $(document).ready(function(){
         return [year, month, day].join('/');
     }
 
+
     console.log(formatDate());
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
