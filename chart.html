@@ -27,9 +27,25 @@
         </div>
     </nav>
 
-
     <div class="content-wrapper">
-
+        <div class="row">
+            <div class="col-md-9 m-auto">
+                <div class="grid-margin stretch-card mt-5">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <div class="col-md-2 ml-md-auto">
+                                <label for="start">Date</label>
+                                <input type="date" name="trip-start" id="start">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Chart</h4>
+                            <canvas id="barChart" style="height:230px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- content-wrapper ends -->
 
@@ -52,7 +68,7 @@
     <script src="js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="js/index.js"></script>
+    <script src="js/chart.js"></script>
     <!-- End custom js for this page-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>

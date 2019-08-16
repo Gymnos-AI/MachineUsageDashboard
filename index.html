@@ -13,83 +13,84 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="icon" type="image/png" href="images/logo.png" >
+  <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 
 <body>
-     <!-- partial:partials/_navbar.html -->
-     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center m-auto">
-            <a class="navbar-brand brand-logo-img" href="index.html"><img src="images/brand.png" alt="logos"/></a>
-        </div>
-      </nav>
-    <!-- bordered table -->
-    <div class="row">
+  <!-- partial:partials/_navbar.html -->
+  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center m-auto">
+      <a class="navbar-brand brand-logo-img" href="index.html"><img src="images/brand.png" alt="logos" /></a>
+    </div>
+  </nav>
+  <!-- bordered table -->
+  <div class="row">
     <div class="col-lg-6 grid-margin stretch-card mr-auto">
-        <div class="card">
-          <div class="card-body mt-5">
-            <h4 class="card-title">Equipment table</h4>
-            <p class="card-description">
-               For more analytics, click below!
-            </p>
+      <div class="card">
+        <div class="card-body mt-5">
+          <h4 class="card-title">Equipment table</h4>
+          <p class="card-description">
+            For more analytics, click below!
+          </p>
 
-            <div class="mb-2">
-              <a class="btn btn-primary" href="chart.html" role="button">More</a>
-            </div>
-            
-            <table class="table table-bordered" id="table">
-              <thead>
-                <tr>
-                  <th>
-                    Machine
-                  </th>
-                  <th>
-                    Total Usage
-                  </th>
-                </tr>
-              </thead>
-              <tbody id = "table-body">
-              </tbody>
-            </table>
+          <div class="mb-2">
+            <a class="btn btn-primary" href="chart.html" role="button">More</a>
           </div>
-        </div>
-      </div>
 
-      <div class="col-lg-6">
-          <img src="images/logo.png" class="img-fluid mt-5" alt="Responsive image">
+          <table class="table table-bordered" id="table">
+            <thead>
+              <tr>
+                <th>
+                  Machine
+                </th>
+                <th>
+                  Total Usage
+                </th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-      <!-- partial -->
-        <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title">
-              Todays Data
-            </h3>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">Usage Data</li>
-              </ol>
-            </nav>
+
+    <div class="col-lg-6">
+      <img src="images/logo.png" class="img-fluid mt-5 mb-3" alt="Responsive image">
+    </div>
+  </div>
+
+  <!-- partial -->
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">
+        Todays Data
+      </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Usage Data</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Pie chart</h4>
+            <canvas id="pieChart" style="height:250px"></canvas>
           </div>
-          <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Pie chart</h4>
-                  <canvas id="pieChart" style="height:250px"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bar chart</h4>
-                  <canvas id="barChart" style="height:230px"></canvas>
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Bar chart</h4>
+            <canvas id="barChart" style="height:230px"></canvas>
           </div>
-          <!--<div class="row">
+        </div>
+      </div>
+    </div>
+    <!--<div class="row">
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -108,19 +109,20 @@
             </div>
           </div>-->
 
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.gymnos.ca/" target="_blank">GYMNOS</a>. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a
+          href="https://www.gymnos.ca/" target="_blank">GYMNOS</a>. All rights reserved.</span>
     </div>
-    <!-- page-body-wrapper ends -->
+  </footer>
+  <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
