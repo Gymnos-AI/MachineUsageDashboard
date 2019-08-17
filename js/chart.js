@@ -1,3 +1,5 @@
+var barChartCanvas;
+var barChart;
 $(document).ready(function(){       
     let db;
     let config = {
@@ -7,11 +9,12 @@ $(document).ready(function(){
     };
     let app = firebase.initializeApp(config);
     db = firebase.firestore(app);
+
     //firebase.firestore.setLogLevel("debug");
 
     
     //console.log(formatDate());
-    /*
+    
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -22,7 +25,6 @@ $(document).ready(function(){
         });
         charts(machines, totalTimes);
     })
-    */
 
     let from = null;
     let to = null;
@@ -30,6 +32,7 @@ $(document).ready(function(){
     function stuff(){ 
         query_date(from, to, db);
     }
+
 
     $('input[name="daterange"]').daterangepicker({
         opens: 'left'
@@ -58,8 +61,6 @@ function formatDate() {
     return [year, month, day].join('/');
 }
 
-
-
 function query_date(from, to, db){
     //removeData(charts)
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", ">=", from).where("Date", "<=", to)
@@ -71,26 +72,18 @@ function query_date(from, to, db){
             totalTimes.push(doc.data().TotalTime);
         });
 
+        //let canvas = $('#canvas').get(0).getContext("2d");
+        //console.log(canvas);
+        //console.log(barChart);\
+        barChart.destroy();
+        //removeData(barChart);
+
         charts(machines, totalTimes);
     })
 
 }
 
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-}
 
-function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.update();
-}
 
 function charts(machines, totalTimes){
     
@@ -102,8 +95,7 @@ function charts(machines, totalTimes){
     var data = {
         labels: machines,
         datasets: [{
-        label: '# of Seconds',
-        data: totalTimes,
+        label: "# of seconds",
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -120,42 +112,60 @@ function charts(machines, totalTimes){
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
         ],
+        data: totalTimes,
         borderWidth: 1,
         fill: false
         }],
-
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: machines
     };
 
     var options = {
+        title: {
+            display: true,
+            text: 'Total Usage Times'
+        },
         scales: {
         yAxes: [{
             ticks: {
             beginAtZero: true,
+            },
+            scaleLabel: {
+                display: true,
+                labelString: "# of Seconds"
             }
-        }]
+        }],
+        xAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: "Machines"
+            }
+        }], 
         },
         legend: {
-        display: false
+        display: true,
         },
         elements: {
         point: {
             radius: 0
         }
-        }
+        },
 
     };
 
-
-    
-    // Get context with jQuery - using jQuery's .get() method.
-    if ($("#barChart").length) {
-        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+    function drawChart() {
+        // Get context with jQuery - using jQuery's .get() method.
+        barChartCanvas = $("#canvas").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        var barChart = new Chart(barChartCanvas, {
+        barChart = new Chart(barChartCanvas, {
         type: 'bar',
         data: data,
         options: options
         });
+
     }
+
+    drawChart();
+
 
 }

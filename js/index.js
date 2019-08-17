@@ -23,7 +23,7 @@ $(document).ready(function(){
     }
 
     console.log(formatDate());
-    var first_pass = true
+    var first_pass = true;
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -168,7 +168,7 @@ function charts(machines, totalTimes){
         }]
         },
         legend: {
-        display: false
+        display: true
         },
         elements: {
         point: {
