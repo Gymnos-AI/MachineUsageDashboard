@@ -191,6 +191,8 @@ function charts(machines, totalTimes){
     };
 
     var options = {
+        responsive: true,
+        maintainAspectRatio: false,
         title: {
             display: true,
             text: 'Total Usage Times Per Machine (in seconds)'

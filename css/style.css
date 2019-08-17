@@ -14135,6 +14135,33 @@ a.close.disabled {
   padding: 15px;
 }
 
+
+
+
+
+
+.chart-container {
+  height: 60vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .modal-footer {
   display: flex;
   align-items: center;
