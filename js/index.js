@@ -23,7 +23,7 @@ $(document).ready(function(){
     }
 
     console.log(formatDate());
-    var first_pass = true
+    var first_pass = true;
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", "==", formatDate())
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -61,16 +61,6 @@ function init(machines, totalTimes, first_pass){
             console.log('deletion worked');
         }
     }
-    //var rows = $("#table-body").find('tr');
-    //console.log('# of rows' + rows);
-
-    //var x = document.getElementById("myTable").rows.length;
-
-    //for (i = 0; x > machines.length; i++)
-   // {
-    //    var row = table.deleteRow(1);
-    //    console.log('deletion worked');
-    //}
 
 
     // rows
@@ -173,12 +163,12 @@ function charts(machines, totalTimes){
         scales: {
         yAxes: [{
             ticks: {
-            beginAtZero: true
+            beginAtZero: true,
             }
         }]
         },
         legend: {
-        display: false
+        display: true
         },
         elements: {
         point: {

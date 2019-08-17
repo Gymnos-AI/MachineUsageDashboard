@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gymnos</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/logo.png" />
+    <!-- including Firebase -->
+</head>
+
+
+
+<body>   
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center m-auto">
+            <a class="navbar-brand brand-logo-img" href="index.html"><img src="images/brand.png" alt="logos"/></a>
+        </div>
+    </nav>
+
+    <div class="content-wrapper min-vh-100">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+                <div class="grid-margin stretch-card mt-5">
+                    <div class="card">
+                        <div class="card-header bg-white ml-auto">
+                            <div class="col">
+                                <label for="start">Date</label>
+                                <input type="text" name="daterange" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Chart</h4>
+                            <canvas id="canvas" style="height:230px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- content-wrapper ends -->
+
+
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.gymnos.ca/" target="_blank">GYMNOS</a>. All rights reserved.</span>
+        </div>
+    </footer>
+
+        </div>
+
+
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <script src="vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/chart.js"></script>
+    <!-- End custom js for this page-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</body>
+
+</html>
