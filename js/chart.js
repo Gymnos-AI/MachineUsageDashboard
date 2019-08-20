@@ -85,7 +85,11 @@ function query_date(from, to, db){
 
 
 
+
+
 function charts(machines, totalTimes){
+
+
     
     /* ChartJS
     * -------
@@ -208,6 +212,7 @@ function charts(machines, totalTimes){
         xAxes: [{
             scaleLabel: {
                 display: true,
+                label: machines,
                 labelString: "Machines"
             }
         }], 
@@ -225,11 +230,11 @@ function charts(machines, totalTimes){
 
     function drawChart() {
         // Get context with jQuery - using jQuery's .get() method.
-        barChartCanvas = $("#canvas").get(0).getContext("2d");
+        multiLineCanvas = $("#canvas").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        barChart = new Chart(barChartCanvas, {
-        type: 'bar',
-        data: data,
+        lineChart = new Chart(barChartCanvas, {
+        type: 'line',
+        data: multiLineData,
         options: options
         });
 

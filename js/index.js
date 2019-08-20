@@ -94,7 +94,34 @@ function init(machines, totalTimes, first_pass){
     }
 
 };
+/*
+{
+    label: machines[0],
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgba(255,99,132,1)',
+    borderWidth: 1,
+    fill: false,
+    data: totalTimes[0],
+}, 
 
+{
+    label: machines[1],
+   // data: totalTimes[1],
+    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1,
+    fill: false,
+    data: totalTimes[1],
+}, 
+
+{
+    label: machines[2],
+ //   data: totalTimes[2],
+    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+    borderColor: 'rgba(255, 206, 86, 1)',
+    borderWidth: 1,
+    fill: false
+*/
 
 function charts(machines, totalTimes){
     
@@ -104,9 +131,9 @@ function charts(machines, totalTimes){
     */
     'use strict';
     var data = {
-        labels: machines,
+       // labels: machines,
         datasets: [{
-        label: '# of Seconds',
+        label: "# of seconds",
         data: totalTimes,
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -126,7 +153,9 @@ function charts(machines, totalTimes){
         ],
         borderWidth: 1,
         fill: false
-        }]
+        }],
+        display: true,
+        labels: machines
     };
     var multiLineData = {
         labels: machines,
