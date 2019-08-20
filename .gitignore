@@ -10,3 +10,7 @@ images/.DS_Store
 js/.DS_Store
 fonts/Ubuntu/.DS_Store
 fonts/.DS_Store
+.idea/misc.xml
+.idea/modules.xml
+.idea/UsageFrontEnd.iml
+.idea/vcs.xml
