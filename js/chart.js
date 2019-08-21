@@ -68,8 +68,12 @@ function query_date(from, to, db){
         var machines = [];
         var totalTimes = [];
         querySnapshot.forEach(function(doc) {
-            machines.push(doc.data().Name);
-            totalTimes.push(doc.data().TotalTime);
+            console.log(doc.data().Name);
+            console.log(doc.data().TotalTime);
+          //  if (machines.doc.data().Name != machines.doc.data().Name) {
+                machines.push(doc.data().Name);
+                totalTimes.push(doc.data().TotalTime);
+           // }
         });
 
         //let canvas = $('#canvas').get(0).getContext("2d");
@@ -230,11 +234,11 @@ function charts(machines, totalTimes){
 
     function drawChart() {
         // Get context with jQuery - using jQuery's .get() method.
-        multiLineCanvas = $("#canvas").get(0).getContext("2d");
+        barChartCanvas = $("#canvas").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        lineChart = new Chart(barChartCanvas, {
-        type: 'line',
-        data: multiLineData,
+        barChart = new Chart(barChartCanvas, {
+        type: 'bar',
+        data: data,
         options: options
         });
 
