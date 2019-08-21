@@ -1,5 +1,5 @@
-var barChartCanvas;
-var barChart;
+var chartCanvas;
+var chart;
 $(document).ready(function(){       
     let db;
     let config = {
@@ -62,7 +62,6 @@ function formatDate() {
 }
 
 function query_date(from, to, db){
-    //removeData(charts)
     db.collection("Gyms").doc("DewdmGRDsqLyxChcJCKp").collection("Usage").where("Date", ">=", from).where("Date", "<=", to)
     .onSnapshot(function(querySnapshot) {
         var machines = [];
@@ -76,12 +75,7 @@ function query_date(from, to, db){
            // }
         });
 
-        //let canvas = $('#canvas').get(0).getContext("2d");
-        //console.log(canvas);
-        //console.log(barChart);\
-        barChart.destroy();
-        //removeData(barChart);
-
+        chart.destroy();
         charts(machines, totalTimes);
     })
 
@@ -198,6 +192,41 @@ function charts(machines, totalTimes){
         labels: machines
     };
 
+    console.log(machines);
+    console.log(totalTimes);
+
+    var multiLineData = {
+        labels: totalTimes,
+        datasets: [{
+            label: machines[0],
+            data: totalTimes[0],
+            borderColor: [
+            '#587ce4'
+            ],
+            borderWidth: 2,
+            fill: false
+        },
+        {
+            label: machines[1],
+            data: totalTimes[1],
+            borderColor: [
+            '#ede190'
+            ],
+            borderWidth: 2,
+            fill: false
+        },
+        {
+            label: machines[2],
+            data: totalTimes[2],
+            borderColor: [
+            '#f44252'
+            ],
+            borderWidth: 2,
+            fill: false
+        }
+        ]
+    };
+
     var options = {
         title: {
             display: true,
@@ -205,19 +234,18 @@ function charts(machines, totalTimes){
         },
         scales: {
         yAxes: [{
-            ticks: {
-            beginAtZero: true,
-            },
             scaleLabel: {
                 display: true,
-                labelString: "# of Seconds"
+                label: machines,
+                labelString: "machines"
             }
         }],
         xAxes: [{
             scaleLabel: {
                 display: true,
-                label: machines,
-                labelString: "Machines"
+                label: totalTimes,
+                t: formatDate(),
+                labelString: "Date"
             }
         }], 
         },
@@ -232,13 +260,15 @@ function charts(machines, totalTimes){
 
     };
 
+
+
     function drawChart() {
         // Get context with jQuery - using jQuery's .get() method.
-        barChartCanvas = $("#canvas").get(0).getContext("2d");
+        chartCanvas = $("#canvas").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
-        barChart = new Chart(barChartCanvas, {
-        type: 'bar',
-        data: data,
+        chart = new Chart(chartCanvas, {
+        type: 'line',
+        data: multiLineData,
         options: options
         });
 
