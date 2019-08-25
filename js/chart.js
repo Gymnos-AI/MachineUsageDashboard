@@ -71,52 +71,12 @@ function query_date(from, to, db){
         values = Object.keys(machines).map(function(key){
             return machines[key];
         });
-    //    console.log(keys);
-    //    console.log(values);
+        // console.log(keys);
         // console.log(values);
         chart.destroy();
         // charts(keys, values);
         
-
-
-        /*  
-        // a dictionary of machine and it's total time; "machineTime"
-        var machineTime = {};
-        machines.forEach((key, i) => machineTime[key] = totalTimes[i]);
-        console.table(machineTime);
-
-        for (var i=0; i < times.length; i++) {
-            for (var j=0; j < times[i].length; j++) {
-                var result = times[i][j];
-                res = result.split(/#/);
-                var start = res[0];
-                var end = res[1];
-                
-                // Create a new JavaScript Date object based on the timestamp
-                // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-                var date = new Date(start*1000);
-                // Hours part from the timestamp
-                var hours = date.getHours();
-                // Minutes part from the timestamp
-                var minutes = "0" + date.getMinutes();
-                // Seconds part from the timestamp
-                var seconds = "0" + date.getSeconds();
-                // Will display time in 10:30:23 format
-                var startTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-                var date = new Date(end*1000);
-                var hours = date.getHours();
-                var minutes = "0" + date.getMinutes();
-                var seconds = "0" + date.getSeconds();
-                var endTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-                console.log(startTime + " - " + endTime);
-            }   
-        }
-        */
-
     })
-
 }
 
 function convertRawTimes(machines) {
@@ -153,7 +113,7 @@ function convertRawTimes(machines) {
         machines[value] = hours;
         console.log(machines[value]);
         console.log(machines);
-    //    console.log(start, end, diff);
+        console.log(start, end, diff);
     }
     return(machines);
 }
